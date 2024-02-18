@@ -38,7 +38,7 @@ public class CandyService {
             if (!candy.getName().isEmpty()) {
                 updateCandy.setName(candy.getName());
             }
-            if (candy.getPrice() != null) {
+            if (candy.getPrice() != 0) {
                 updateCandy.setPrice(candy.getPrice());
             }
             if (!candy.getManufacturingCompany().isEmpty()) {
