@@ -18,7 +18,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 
 @ActiveProfiles("test")
@@ -88,7 +88,12 @@ class CandyServiceTest {
 
     @Test
     void deleteCandy() {
+        when(candyRepository.findById(1L)).thenReturn(Optional.of(candy1()));
+        boolean result = candyService.deleteCandy(1L);
+        verify(candyRepository, times(1)).deleteById(1L);
 
+
+        assertEquals(true,result);
 
     }
 
