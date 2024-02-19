@@ -24,12 +24,8 @@ private final CandyService service;
     @GetMapping("/{id}")
     public ResponseEntity<?> getCandyInfo(@PathVariable long id){
         try{
-            if (id < 0) {
-                return ResponseEntity.badRequest().build();
-            }
 
              var candy = service.getACandy(id);
-            System.out.println(candy.get());
 
             if(candy.isEmpty()){
             return ResponseEntity.notFound().build();
@@ -110,7 +106,6 @@ private final CandyService service;
 
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
-
 
     }
 
