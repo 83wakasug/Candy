@@ -22,7 +22,6 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 @SpringBootTest(classes = CandyServiceTest.class)
-@ImportResource({"classpath*:application-context.xml"})
 @ActiveProfiles("test")
 @Slf4j
 class CandyServiceTest {
