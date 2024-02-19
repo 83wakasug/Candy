@@ -19,6 +19,18 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root_password
+          MYSQL_DATABASE: your_database_name
+          MYSQL_USER: your_mysql_username
+          MYSQL_PASSWORD: your_mysql_password
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 21
@@ -31,5 +43,7 @@ jobs:
       run: mvn -B clean package --file pom.xml
       env:
         GITHUB_TOKEN: ${{ secrets.YOUR_ACCESS_TOKEN_SECRET_NAME }}
-
+        SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/candy
+        SPRING_DATASOURCE_USERNAME: root
+        SPRING_DATASOURCE_PASSWORD: Password
 
