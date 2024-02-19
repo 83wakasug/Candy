@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-@SpringBootTest
+@SpringBootTest(classes = CandyServiceTest.class)
 @ActiveProfiles("test")
 @Slf4j
 class CandyServiceTest {
