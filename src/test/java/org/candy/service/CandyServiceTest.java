@@ -52,11 +52,7 @@ class CandyServiceTest {
 
     }
 
-    @Test
-    void tomttest() {
 
-
-    }
 
     @Test
     void addCandy() {
