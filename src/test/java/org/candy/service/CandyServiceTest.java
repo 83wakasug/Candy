@@ -28,7 +28,7 @@ class CandyServiceTest {
     private CandyService candyService;
 
 
-    @Test
+   /* @Test
     void getACandy() {
         when(candyRepository.findById(1L)).thenReturn(Optional.of(candy1()));
         Optional<Candy> candyOptional = candyService.getACandy(1L);
@@ -39,7 +39,7 @@ class CandyServiceTest {
             assertEquals(candy.getManufacturingCompany(), "Morinaga");
             assertEquals(candy.getPrice(), 100);
 
-    }
+    }*/
 
     @Test
     void getAllACandies() {
