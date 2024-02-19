@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
@@ -61,10 +62,18 @@ class CandyServiceTest {
 
     @Test
     void addCandy() {
-        when(candyRepository.save(candy1())).thenReturn(candy1());
-        Candy candy = candyRepository.save(candy1());
 
-        assertEquals(candy,candy1());
+        // モックの設定
+        when(candyRepository.save(any(Candy.class))).thenReturn(candy1());
+
+        // テスト対象のメソッド呼び出し
+        Candy candy = candyService.addCandy(candy1());
+
+        // モックの振る舞いを検証
+        verify(candyRepository, times(1)).save(any(Candy.class));
+
+        // アサーション
+        assertEquals(candy1(), candy);
 
     }
 
@@ -89,12 +98,18 @@ class CandyServiceTest {
 
     @Test
     void deleteCandy() {
+        // モックの設定
         when(candyRepository.findById(1L)).thenReturn(Optional.of(candy1()));
+        doNothing().when(candyRepository).deleteById(1L);
+
+        // テスト対象のメソッド呼び出し
         boolean result = candyService.deleteCandy(1L);
+
+        // モックの振る舞いを検証
         verify(candyRepository, times(1)).deleteById(1L);
 
-
-        assertEquals(true,result);
+        // アサーション
+        assertTrue(result);
 
     }
 
@@ -109,6 +124,7 @@ class CandyServiceTest {
     public Candy candy3(){
         return new Candy(2L, "Jagarioko", "Calbee", 150);
     }
+
 
 
 
