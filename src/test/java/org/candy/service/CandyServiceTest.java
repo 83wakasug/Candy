@@ -53,6 +53,12 @@ class CandyServiceTest {
     }
 
     @Test
+    void tomttest() {
+
+
+    }
+
+    @Test
     void addCandy() {
 
         // モックの設定
