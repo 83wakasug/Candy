@@ -5,14 +5,10 @@ import org.candy.CandyApplication;
 import org.candy.entity.Candy;
 import org.candy.repository.CandyRepository;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.ImportResource;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.ContextConfiguration;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -21,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-@SpringBootTest
+@SpringBootTest(classes = CandyServiceTest.class)
 @ActiveProfiles("test")
 class CandyServiceTest {
 
