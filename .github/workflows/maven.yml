@@ -23,7 +23,7 @@ jobs:
       mysql:
         image: mysql:8.0
         env:
-          MYSQL_ROOT_PASSWORD: Password
+          MYSQL_ROOT_PASSWORD: Happyday123!
           MYSQL_DATABASE: candy
         ports:
           - 3306:3306
@@ -42,8 +42,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.YOUR_ACCESS_TOKEN_SECRET_NAME }}
           SPRING_CONFIG_LOCATION: "classpath:/application.properties,classpath:/application.properties"
-          SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/candy
+          SPRING_DATASOURCE_URL: jdbc:mysql://bookstore.c306862ywt6q.us-east-1.rds.amazonaws.com:3306/candy
           SPRING_DATASOURCE_USERNAME: root
-          SPRING_DATASOURCE_PASSWORD: Password
+          SPRING_DATASOURCE_PASSWORD: Happyday123!
 
 
