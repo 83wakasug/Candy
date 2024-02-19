@@ -17,8 +17,8 @@ public class Candy {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String Name;
-    private String ManufacturingCompany;
+    private String name;
+    private String manufacturingCompany;
     private int price;
 
 }

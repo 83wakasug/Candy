@@ -22,7 +22,7 @@ public class CandyController {
 private final CandyService service;
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getCandyInfo(@RequestParam long id){
+    public ResponseEntity<?> getCandyInfo(@PathVariable long id){
         try{
             if (id < 0) {
                 return ResponseEntity.badRequest().build();

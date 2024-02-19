@@ -35,13 +35,13 @@ public class CandyService {
 
 
         updateCandyOptional.ifPresent(updateCandy -> {
-            if (!candy.getName().isEmpty()) {
+            if (candy.getName() != null) {
                 updateCandy.setName(candy.getName());
             }
             if (candy.getPrice() != 0) {
                 updateCandy.setPrice(candy.getPrice());
             }
-            if (!candy.getManufacturingCompany().isEmpty()) {
+            if (candy.getManufacturingCompany() !=null) {
                 updateCandy.setManufacturingCompany(candy.getManufacturingCompany());
             }
             candyRepository.save(updateCandy);
