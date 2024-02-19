@@ -1,6 +1,7 @@
 package org.candy.service;
 
 import lombok.extern.slf4j.Slf4j;
+import org.candy.CandyApplication;
 import org.candy.entity.Candy;
 import org.candy.repository.CandyRepository;
 import org.junit.jupiter.api.Test;
@@ -16,10 +17,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-
+@SpringBootTest(classes = CandyApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
 @Slf4j
-@SpringBootTest
 class CandyServiceTest {
 
     @Mock
