@@ -23,9 +23,9 @@ jobs:
       mysql:
         image: mysql:8.0
         env:
-          MYSQL_ROOT_PASSWORD: root
+          MYSQL_ROOT_PASSWORD: Password
           MYSQL_DATABASE: jdbc:mysql://localhost:3306/candy
-          MYSQL_USER: your_mysql_username
+          MYSQL_USER: root
           MYSQL_PASSWORD: Password
         ports:
           - 3306:3306
