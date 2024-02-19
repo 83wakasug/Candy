@@ -8,6 +8,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/candy")
 @RequiredArgsConstructor
@@ -18,7 +21,7 @@ public class CandyController {
 
 private final CandyService service;
 
-    @GetMapping("/")
+    @GetMapping("/{id}")
     public ResponseEntity<?> getCandyInfo(@RequestParam long id){
         try{
             if (id < 0) {
@@ -26,6 +29,7 @@ private final CandyService service;
             }
 
              var candy = service.getACandy(id);
+            System.out.println(candy.get());
 
             if(candy.isEmpty()){
             return ResponseEntity.notFound().build();
@@ -40,7 +44,7 @@ private final CandyService service;
     }
 
     @PostMapping("/")
-    public ResponseEntity<?> addCandy(Candy candy) {
+    public ResponseEntity<?> addCandy(@RequestBody Candy candy) {
         try {
             Candy addedCandy = service.addCandy(candy);
             return ResponseEntity.ok(addedCandy);
@@ -51,14 +55,18 @@ private final CandyService service;
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
 
-
     }
 
-    @PostMapping("/all")
-    public ResponseEntity<?> GetCandyList(Candy candy) {
+    @GetMapping("/all")
+    public ResponseEntity<?> GetCandyList() {
         try {
-            Candy addedCandy = service.addCandy(candy);
-            return ResponseEntity.ok(addedCandy);
+            Optional<List<Candy>> candyList = service.getAllACandies();
+            if(candyList.isEmpty()){
+
+                return ResponseEntity.notFound().build();
+
+            }
+            return ResponseEntity.ok(candyList.get());
         } catch (DataIntegrityViolationException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         } catch (Exception e) {
@@ -69,21 +77,25 @@ private final CandyService service;
 
     }
 
-    @PutMapping("")
-    public ResponseEntity<?> updateCandy(Candy candy) {
+    @PutMapping("/")
+    public ResponseEntity<?> updateCandy(@RequestBody Candy candy) {
         try {
-            Candy addedCandy = service.addCandy(candy);
-            return ResponseEntity.ok(addedCandy);
+            Optional<Candy> updatedCandy = service.updateCandy(candy);
+            if (updatedCandy.isPresent()) {
+                return ResponseEntity.ok(updatedCandy.get());
+            } else {
+                return ResponseEntity.notFound().build(); // or handle as needed
+            }
         } catch (DataIntegrityViolationException e) {
+            // Log the exception details for debugging
+            e.printStackTrace();
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         } catch (Exception e) {
-
+            // Log the exception details for debugging
+            e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
-
-
     }
-
     @DeleteMapping("")
     public ResponseEntity<?> deleteCandy(Long id) {
         try {
@@ -102,6 +114,8 @@ private final CandyService service;
 
     }
 
-
-
 }
+
+
+
+

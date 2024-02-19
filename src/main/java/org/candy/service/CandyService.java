@@ -19,7 +19,7 @@ public class CandyService {
         return candy;
     }
 
-    public Optional<List<Candy>> getAllACandies(long id) {
+    public Optional<List<Candy>> getAllACandies() {
         Optional<List<Candy>> candies = Optional.of(candyRepository.findAll());
         return candies;
     }
