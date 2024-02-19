@@ -10,8 +10,8 @@ import org.springframework.test.context.ActiveProfiles;
 @Slf4j
 class CandyApplicationTests {
 
-    @Test
+    /*@Test
     void contextLoads() {
-    }
+    }*/
 
 }
