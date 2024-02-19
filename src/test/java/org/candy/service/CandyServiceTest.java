@@ -39,7 +39,7 @@ class CandyServiceTest {
             assertEquals(candy.getManufacturingCompany(), "Morinaga");
             assertEquals(candy.getPrice(), 100);
 
-    }*/
+    }
 
     @Test
     void getAllACandies() {
@@ -117,7 +117,7 @@ class CandyServiceTest {
     public Candy candy3(){
         return new Candy(2L, "Jagarioko", "Calbee", 150);
     }
-
+*/
 
 
 
