@@ -92,7 +92,7 @@ private final CandyService service;
         }
     }
     @DeleteMapping("/")
-    public ResponseEntity<?> deleteCandy(Long id) {
+    public ResponseEntity<?> deleteCandy(@PathVariable Long id) {
         try {
             boolean deleted = service.deleteCandy(id);
             if(!deleted){
