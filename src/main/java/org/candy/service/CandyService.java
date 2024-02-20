@@ -30,8 +30,8 @@ public class CandyService {
         return candyRepository.save(candy) ;
     }
 
-    public Optional<Candy> updateCandy(Candy candy) {
-        Optional<Candy> updateCandyOptional = candyRepository.findById(candy.getId());
+    public Optional<Candy> updateCandy(long id,Candy candy) {
+        Optional<Candy> updateCandyOptional = candyRepository.findById(id);
 
 
         updateCandyOptional.ifPresent(updateCandy -> {
@@ -55,9 +55,9 @@ public class CandyService {
         Optional<Candy> candy = candyRepository.findById(id);
         if (candy.isPresent()) {
             candyRepository.deleteById(id);
-            return null;
+            return candy;
         }
-        return candy;
+        return null;
     }
 
 }

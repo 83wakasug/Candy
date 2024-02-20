@@ -83,7 +83,7 @@ class CandyServiceTest {
         candyToUpdate.setPrice(150);
 
         when(candyRepository.save(any(Candy.class))).thenReturn(candyToUpdate);
-        Optional<Candy> newCandy = candyService.updateCandy(candyToUpdate);
+        Optional<Candy> newCandy = candyService.updateCandy(1L,candyToUpdate);
         assertEquals("Calbee", newCandy.get().getManufacturingCompany());
         assertEquals("Jagarioko", newCandy.get().getName());
         assertEquals(150, newCandy.get().getPrice());
@@ -97,13 +97,13 @@ class CandyServiceTest {
         doNothing().when(candyRepository).deleteById(1L);
 
         // テスト対象のメソッド呼び出し
-        boolean result = candyService.deleteCandy(1L);
+        Optional<Candy> result = candyService.deleteCandy(1L);
 
         // モックの振る舞いを検証
         verify(candyRepository, times(1)).deleteById(1L);
 
         // アサーション
-        assertTrue(result);
+        assertEquals(candy1(),result.get());
 
     }
 

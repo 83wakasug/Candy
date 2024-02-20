@@ -75,7 +75,7 @@ private final CandyService service;
     @PutMapping("/{id}")
     public ResponseEntity<?> updateCandy(@PathVariable long id,@RequestBody Candy candy) {
         try {
-            Optional<Candy> updatedCandy = service.updateCandy(candy);
+            Optional<Candy> updatedCandy = service.updateCandy(id,candy);
             if (updatedCandy.isPresent()) {
                 return ResponseEntity.ok(updatedCandy.get());
             } else {
