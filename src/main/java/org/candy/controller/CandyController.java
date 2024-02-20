@@ -91,7 +91,7 @@ private final CandyService service;
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
-    @DeleteMapping("")
+    @DeleteMapping("/")
     public ResponseEntity<?> deleteCandy(Long id) {
         try {
             boolean deleted = service.deleteCandy(id);
