@@ -72,8 +72,8 @@ private final CandyService service;
 
     }
 
-    @PutMapping("/")
-    public ResponseEntity<?> updateCandy(@RequestBody Candy candy) {
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateCandy(@PathVariable long id,@RequestBody Candy candy) {
         try {
             Optional<Candy> updatedCandy = service.updateCandy(candy);
             if (updatedCandy.isPresent()) {
@@ -91,14 +91,14 @@ private final CandyService service;
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
-    @DeleteMapping("/")
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteCandy(@PathVariable Long id) {
         try {
-            boolean deleted = service.deleteCandy(id);
-            if(!deleted){
+            Optional<Candy> deleted = service.deleteCandy(id);
+            if(deleted.isEmpty()){
                 return ResponseEntity.notFound().build();
             }
-            return ResponseEntity.ok(deleted);
+            return ResponseEntity.ok(deleted.get());
         } catch (DataIntegrityViolationException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         } catch (Exception e) {

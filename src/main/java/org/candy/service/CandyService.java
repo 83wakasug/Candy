@@ -50,13 +50,14 @@ public class CandyService {
         return updateCandyOptional;
     }
 
-    public boolean deleteCandy(long id){
+    public Optional<Candy> deleteCandy(long id){
+
         Optional<Candy> candy = candyRepository.findById(id);
         if (candy.isPresent()) {
             candyRepository.deleteById(id);
-            return true;
+            return null;
         }
-        return false;
+        return candy;
     }
 
 }
