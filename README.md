@@ -75,3 +75,4 @@ Response
     404 Not Found: Candy with the given ID not found.
     400 Bad Request: Data integrity violation or invalid request.
     500 Internal Server Error: An unexpected error occurred.
+
