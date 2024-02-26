@@ -19,7 +19,7 @@ public class CandyController {
 
 
 private final CandyService service;
-
+    private final String ERROR_URL = "/error";
     @GetMapping("/{id}")
     public ResponseEntity<?> getCandyInfo(@PathVariable long id){
         try{
@@ -73,9 +73,9 @@ private final CandyService service;
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateCandy(@PathVariable long id,@RequestBody Candy candy) {
+    public ResponseEntity<?> updateCandy(@RequestBody Candy candy) {
         try {
-            Optional<Candy> updatedCandy = service.updateCandy(id,candy);
+            Optional<Candy> updatedCandy = service.updateCandy(candy.getId(),candy);
             if (updatedCandy.isPresent()) {
                 return ResponseEntity.ok(updatedCandy.get());
             } else {
