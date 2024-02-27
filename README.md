@@ -1,7 +1,7 @@
 ## Candy API 🍬
 
-The Candy API allows you to manage delightful candy information effortlessly.
-
+The Candy API allows you to manage candy information effortlessly.
+The Candy API makes it easy for you to handle candy information. This application smoothly connects with an API hosted on Amazon Web Services (AWS). This connection helps the application talk to the API, making it work better and allowing cool things like real-time updates and keeping data in sync. The AWS-based API acts as a behind-the-scenes helper for the Candy Application, providing important stops for getting and changing data.
 ## System
 - Java Openjdk-21
 - MySQL (AWS)
