@@ -112,3 +112,5 @@ Response
 2. Build process is executed using CodeBuild.
 3. Deployed code is updated on Elastic Beanstalk.
 
+### Github
+https://github.com/83wakasug/Candy.git
