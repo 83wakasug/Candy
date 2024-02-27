@@ -1,8 +1,18 @@
-Candy API 🍬
+## Candy API 🍬
 
 The Candy API allows you to manage delightful candy information effortlessly.
-🌐 Endpoints
-1. Get Candy Information
+
+## System
+- Java Openjdk-21
+- MySQL (AWS)
+- CodePipeline(AWS)
+- Code Build(AWS)
+- Elastic Beanstalk(AWS)
+- Github Actions
+
+
+## 🌐 Endpoints
+### 1. Get Candy Information
    Request
 
    Method: GET
@@ -15,7 +25,7 @@ Response
     500 Internal Server Error: An unexpected error occurred.
 
 
-2. Add Candy 🍭
+### 2. Add Candy 🍭
    Request
 
    Method: POST
@@ -27,17 +37,17 @@ Response
     200 OK: Successfully added candy.
     400 Bad Request: Data integrity violation or invalid request.
     500 Internal Server Error: An unexpected error occurred.
-
+   
+   sample code
 ```json
 {
-  "id": null,
   "name": "Sample Candy",
   "manufacturingCompany": "Sample company",
   "price": 10
 }
 ```
 
-3. Get All Candies 🍫
+### 3. Get All Candies 🍫
    Request
 
    Method: GET
@@ -49,7 +59,7 @@ Response
     404 Not Found: No candies found.
     500 Internal Server Error: An unexpected error occurred.
 
-4. Update Candy 🍬
+### 4. Update Candy 🍬
    Request
 
    Method: PUT
@@ -63,7 +73,7 @@ Response
     400 Bad Request: Data integrity violation or invalid request.
     500 Internal Server Error: An unexpected error occurred.
 
-5. Delete Candy 🗑️
+### 5. Delete Candy 🗑️
    Request
 
    Method: DELETE
@@ -77,4 +87,28 @@ Response
     500 Internal Server Error: An unexpected error occurred.
 
 
+## AWS pipeline
+**Source:**
+- Code is fetched from GitHub.
+- Changes in the source code trigger a new build process.
+
+**Build:**
+- The build and compile process create executable code from the source code.
+- The build can include unit tests and other build-related activities.
+
+**Deploy:**
+- The code is deployed to EC2 instances.
+- The deployment can include configuration changes and other necessary resource updates.
+
+---
+
+**AWS Setup:**
+- The build is set up using AWS CodeBuild.
+- The program is deployed through Elastic Beanstalk.
+- Configurations are managed by AWS CodePipeline.
+
+**Workflow:**
+1. Code is fetched from GitHub.
+2. Build process is executed using CodeBuild.
+3. Deployed code is updated on Elastic Beanstalk.
 
