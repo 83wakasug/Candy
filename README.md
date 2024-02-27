@@ -113,4 +113,9 @@ Response
 3. Deployed code is updated on Elastic Beanstalk.
 
 ### Github
+Candy Inventory Backend
 https://github.com/83wakasug/Candy.git
+
+Client Candy Frontend
+https://github.com/83wakasug/CandyFrontend.git
+
